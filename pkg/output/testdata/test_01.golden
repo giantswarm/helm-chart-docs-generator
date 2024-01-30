@@ -1,0 +1,13 @@
+---
+title: Test Chart
+linkTitle: Demo
+description: |
+  This is a test Chart
+weight: 100
+owner:
+  - team
+source_repository: https://github.com/giantswarm/my-repo
+source_repository_ref: main
+---
+
+This is the content

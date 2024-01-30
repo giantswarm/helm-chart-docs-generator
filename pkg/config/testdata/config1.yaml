@@ -1,0 +1,9 @@
+template_path: my/file
+
+output_path: output
+
+source_repositories:
+  - url: https://github.com/giantswarm/cluster
+    organization: giantswarm
+    name: cluster
+    commit_reference: v3.39.0
