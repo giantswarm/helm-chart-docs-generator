@@ -8,7 +8,7 @@ description: |
   Cluster App configuration page for {{ .Title }}.
 {{- end }}
 weight: {{ .Weight }}
-layout: cluster-app
+layout: helm-chart
 owner: ""
 source_repository: {{ .SourceRepository }}
 source_repository_ref: {{ .SourceRepositoryRef }}

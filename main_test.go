@@ -18,7 +18,7 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func Test_generateClusterAppDocs(t *testing.T) {
+func Test_generateHelmChartDocs(t *testing.T) {
 	type args struct {
 		configFilePath string
 	}
@@ -35,15 +35,15 @@ func Test_generateClusterAppDocs(t *testing.T) {
 				configFilePath: "testdata/case1/config.yaml",
 			},
 			golden:     "testdata/case1/output.golden",
-			outputFile: "testdata/case1/output/examples.example.giantswarm.io.md",
+			outputFile: "testdata/case1/output/cluster.md",
 			wantErr:    false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := generateClusterAppDocs(tt.args.configFilePath)
+			err := generateHelmChartDocs(tt.args.configFilePath)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("generateClusterAppDocs() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("generateHelmChartDocs() error = %v, wantErr %v", err, tt.wantErr)
 			}
 
 			content, err := os.ReadFile(tt.outputFile)
@@ -54,7 +54,7 @@ func Test_generateClusterAppDocs(t *testing.T) {
 
 			want := goldenValue(t, tt.golden, got, *update)
 			if diff := cmp.Diff(want, got); diff != "" {
-				t.Errorf("generateClusterAppDocs() mismatch (-want +got):\n%s", diff)
+				t.Errorf("generateHelmChartDocs() mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}

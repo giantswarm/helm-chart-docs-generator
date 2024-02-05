@@ -10,16 +10,16 @@ import (
 	"github.com/giantswarm/microerror"
 	"github.com/spf13/cobra"
 
-	"github.com/giantswarm/cluster-app-docs-generator/pkg/chart"
-	"github.com/giantswarm/cluster-app-docs-generator/pkg/config"
-	"github.com/giantswarm/cluster-app-docs-generator/pkg/git"
-	"github.com/giantswarm/cluster-app-docs-generator/pkg/output"
+	"github.com/giantswarm/helm-chart-docs-generator/pkg/chart"
+	"github.com/giantswarm/helm-chart-docs-generator/pkg/config"
+	"github.com/giantswarm/helm-chart-docs-generator/pkg/git"
+	"github.com/giantswarm/helm-chart-docs-generator/pkg/output"
 )
 
-// ClusterAppDocsGenerator represents an instance of this command line tool, it carries
+// helmChartDocsGenerator represents an instance of this command line tool, it carries
 // the cobra command which runs the process along with configuration parameters
 // which come in as flags on the command line.
-type ClusterAppDocsGenerator struct {
+type helmChartDocsGenerator struct {
 	// Internals.
 	rootCommand *cobra.Command
 
@@ -40,29 +40,29 @@ const (
 func main() {
 	var err error
 
-	var clusterAppDocsGenerator ClusterAppDocsGenerator
+	var helmChartDocsGenerator helmChartDocsGenerator
 	{
 		c := &cobra.Command{
-			Use:          "cluster-app-docs-generator",
-			Short:        "cluster-app-docs-generator is a command line tool for generating markdown files that document Giant Swarm's Cluster Apps.",
+			Use:          "helm-chart-docs-generator",
+			Short:        "helm-chart-docs-generator is a command line tool for generating markdown files that document Giant Swarm's Cluster Apps.",
 			SilenceUsage: true,
 			RunE: func(cmd *cobra.Command, args []string) error {
-				return generateClusterAppDocs(clusterAppDocsGenerator.configFilePath)
+				return generateHelmChartDocs(helmChartDocsGenerator.configFilePath)
 			},
 		}
 
-		c.PersistentFlags().StringVar(&clusterAppDocsGenerator.configFilePath, "config", "./config.yaml", "Path to the configuration file.")
-		clusterAppDocsGenerator.rootCommand = c
+		c.PersistentFlags().StringVar(&helmChartDocsGenerator.configFilePath, "config", "./config.yaml", "Path to the configuration file.")
+		helmChartDocsGenerator.rootCommand = c
 	}
 
-	if err = clusterAppDocsGenerator.rootCommand.Execute(); err != nil {
+	if err = helmChartDocsGenerator.rootCommand.Execute(); err != nil {
 		printStackTrace(err)
 		os.Exit(1)
 	}
 }
 
-// generateClusterAppDocs is the function called from our main CLI command.
-func generateClusterAppDocs(configFilePath string) error {
+// generateHelmChartDocs is the function called from our main CLI command.
+func generateHelmChartDocs(configFilePath string) error {
 	configuration, err := config.Read(configFilePath)
 	if err != nil {
 		return microerror.Mask(err)
@@ -110,7 +110,7 @@ func generateClusterAppDocs(configFilePath string) error {
 			sourceRepo.CommitReference,
 			templatePath)
 		if err != nil {
-			log.Printf("WARN - repo %s - something went wrong in WriteClusterAppDocs: %#v", sourceRepo.Name, err)
+			log.Printf("WARN - repo %s - something went wrong in WriteHelmChartDocs: %#v", sourceRepo.Name, err)
 		}
 	}
 

@@ -16,7 +16,7 @@ type FromFile struct {
 }
 
 // SourceRepository has details about a
-// source repository to find ClusterApps in.
+// source repository to find HelmCharts in.
 type SourceRepository struct {
 	URL             string `yaml:"url"`
 	Organization    string `yaml:"organization"`

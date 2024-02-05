@@ -9,7 +9,7 @@ import (
 	"github.com/Masterminds/sprig/v3"
 	"github.com/giantswarm/microerror"
 
-	"github.com/giantswarm/cluster-app-docs-generator/pkg/chart"
+	"github.com/giantswarm/helm-chart-docs-generator/pkg/chart"
 )
 
 // PageData is all the data we pass to generate the Chart detail page.

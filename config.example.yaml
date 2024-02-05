@@ -3,7 +3,7 @@
 #
 # For the effective config used in production for
 # docs.giantswarm.io, see
-# https://github.com/giantswarm/docs/blob/main/scripts/update-cluster-app-reference/config.yaml
+# https://github.com/giantswarm/docs/blob/main/scripts/update-helm-chart-reference/config.yaml
 
 template_path: templates/chart.template
 

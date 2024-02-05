@@ -14,7 +14,7 @@ func TestRead(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		want    string
+		want    Metadata
 		wantErr bool
 	}{
 		{
@@ -23,7 +23,7 @@ func TestRead(t *testing.T) {
 				basePath:  "testdata",
 				chartName: "test-chart",
 			},
-			want:    "# Values schema documentation",
+			want:    Metadata{Name: "xxxxx", Description: "Awesome description", Version: "0.7.0"},
 			wantErr: false,
 		},
 	}

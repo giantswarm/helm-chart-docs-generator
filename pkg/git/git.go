@@ -6,7 +6,7 @@ import (
 
 	"github.com/giantswarm/microerror"
 
-	errorpkg "github.com/giantswarm/cluster-app-docs-generator/error"
+	errorpkg "github.com/giantswarm/helm-chart-docs-generator/error"
 )
 
 // CloneRepositoryShallow will clone repository in a given directory.

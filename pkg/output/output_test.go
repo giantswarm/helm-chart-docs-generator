@@ -9,7 +9,7 @@ import (
 	"github.com/giantswarm/microerror"
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/giantswarm/cluster-app-docs-generator/pkg/chart"
+	"github.com/giantswarm/helm-chart-docs-generator/pkg/chart"
 )
 
 var (
@@ -39,7 +39,7 @@ func TestWritePage(t *testing.T) {
 			name: "Test 01",
 			args: args{
 				content:      "This is the content",
-				metadata:     chart.Metadata{Title: "Test Chart", Description: "This is a test chart", Weight: "1"},
+				metadata:     chart.Metadata{Name: "Test Chart", Description: "This is a test chart", Version: "1.0.0"},
 				repoURL:      "https://github.com/giantswarm/my-repo",
 				repoRef:      "main",
 				templatePath: "testdata/chart.template",

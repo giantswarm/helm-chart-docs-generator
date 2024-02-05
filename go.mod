@@ -1,4 +1,4 @@
-module github.com/giantswarm/cluster-app-docs-generator
+module github.com/giantswarm/helm-chart-docs-generator
 
 go 1.19
 
