@@ -24,6 +24,7 @@ func TestMain(m *testing.M) {
 func TestWritePage(t *testing.T) {
 	type args struct {
 		content      string
+		introduction string
 		metadata     chart.Metadata
 		repoURL      string
 		repoRef      string
@@ -38,7 +39,8 @@ func TestWritePage(t *testing.T) {
 		{
 			name: "Test 01",
 			args: args{
-				content: "This is the content",
+				content:      "This is the content",
+				introduction: "This is the introduction",
 				metadata: chart.Metadata{
 					Name:        "Cluster",
 					Description: "The app creates a cluster",
@@ -65,7 +67,7 @@ func TestWritePage(t *testing.T) {
 			}
 			defer os.RemoveAll(tempDir)
 
-			resultPath, err := WritePage(tt.args.metadata, tt.args.content, tempDir, tt.args.repoURL, tt.args.repoRef, tt.args.templatePath)
+			resultPath, err := WritePage(tt.args.metadata, tt.args.content, tt.args.introduction, tempDir, tt.args.repoURL, tt.args.repoRef, tt.args.templatePath)
 			if err != tt.wantErr {
 				t.Errorf("WritePage() error = %v, wantErr %v", err, tt.wantErr)
 				t.Logf("%s", microerror.Pretty(err, true))

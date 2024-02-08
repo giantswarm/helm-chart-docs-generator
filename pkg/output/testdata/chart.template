@@ -16,4 +16,6 @@ source_repository: {{ .SourceRepository }}
 source_repository_ref: {{ .SourceRepositoryRef }}
 ---
 
+{{ .Introduction }}
+
 {{ .Content }}

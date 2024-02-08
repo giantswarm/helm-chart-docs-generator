@@ -20,6 +20,7 @@ type FromFile struct {
 type SourceRepository struct {
 	URL             string `yaml:"url"`
 	Organization    string `yaml:"organization"`
+	Introduction    string `yaml:"introduction"`
 	Name            string `yaml:"name"`
 	CommitReference string `yaml:"commit_reference"`
 }

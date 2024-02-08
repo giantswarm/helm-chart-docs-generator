@@ -25,6 +25,7 @@ func TestRead(t *testing.T) {
 					{
 						URL:             "https://github.com/giantswarm/cluster",
 						Organization:    "giantswarm",
+						Introduction:    "This is the introduction",
 						Name:            "cluster",
 						CommitReference: "v3.39.0",
 					},

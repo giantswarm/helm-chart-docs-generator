@@ -105,6 +105,7 @@ func generateHelmChartDocs(configFilePath string) error {
 		_, err = output.WritePage(
 			chartMetadata,
 			string(chartContent),
+			sourceRepo.Introduction,
 			outputPath,
 			sourceRepo.URL,
 			sourceRepo.CommitReference,

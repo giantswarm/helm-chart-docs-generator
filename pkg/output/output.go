@@ -19,6 +19,7 @@ type PageData struct {
 	SourceRepositoryRef string
 	Title               string
 	Team                string
+	Introduction        string
 	Content             string
 	Weight              int
 }
@@ -27,6 +28,7 @@ type PageData struct {
 func WritePage(
 	metadata chart.Metadata,
 	content,
+	introduction,
 	outputFolder,
 	repoURL,
 	repoRef,
@@ -53,6 +55,7 @@ func WritePage(
 		Description:         metadata.Description,
 		Team:                metadata.Annotations.Team,
 		Weight:              100,
+		Introduction:        introduction,
 		Content:             content,
 	}
 
