@@ -1,11 +1,11 @@
 ---
-title: Test Chart Cluster App configuration reference
-linkTitle: Test Chart
+title: Cluster Chart Configuration
+linkTitle: Cluster
 description: |
-  This is a test chart
+  The app creates a cluster
 weight: 100
-layout: cluster-app
-owner: ""
+owner:
+- my-team
 source_repository: https://github.com/giantswarm/my-repo
 source_repository_ref: main
 ---

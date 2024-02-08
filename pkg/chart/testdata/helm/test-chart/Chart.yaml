@@ -10,4 +10,4 @@ sources:
 version: 0.7.0
 annotations:
   application.giantswarm.io/app-type: "xxxxx"
-  application.giantswarm.io/team: "team"
+  application.giantswarm.io/team: "buckets"

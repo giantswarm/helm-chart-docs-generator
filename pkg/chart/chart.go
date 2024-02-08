@@ -12,6 +12,9 @@ type Metadata struct {
 	Name        string `yaml:"name"`
 	Description string `yaml:"description"`
 	Version     string `yaml:"version"`
+	Annotations struct {
+		Team string `yaml:"application.giantswarm.io/team"`
+	} `yaml:"annotations"`
 }
 
 // Read reads a README YAML file and returns the Content to render.

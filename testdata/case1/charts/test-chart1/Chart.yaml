@@ -1,5 +1,0 @@
-apiVersion: v2
-description: Chart test description
-name: Chart test title
-home: org/repo-name
-version: 100

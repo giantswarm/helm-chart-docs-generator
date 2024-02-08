@@ -23,7 +23,16 @@ func TestRead(t *testing.T) {
 				basePath:  "testdata",
 				chartName: "test-chart",
 			},
-			want:    Metadata{Name: "xxxxx", Description: "Awesome description", Version: "0.7.0"},
+			want: Metadata{
+				Name:        "xxxxx",
+				Description: "Awesome description",
+				Version:     "0.7.0",
+				Annotations: struct {
+					Team string `yaml:"application.giantswarm.io/team"`
+				}{
+					Team: "buckets",
+				},
+			},
 			wantErr: false,
 		},
 	}

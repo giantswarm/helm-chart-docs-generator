@@ -38,8 +38,17 @@ func TestWritePage(t *testing.T) {
 		{
 			name: "Test 01",
 			args: args{
-				content:      "This is the content",
-				metadata:     chart.Metadata{Name: "Test Chart", Description: "This is a test chart", Version: "1.0.0"},
+				content: "This is the content",
+				metadata: chart.Metadata{
+					Name:        "Cluster",
+					Description: "The app creates a cluster",
+					Version:     "1.0.0",
+					Annotations: struct {
+						Team string `yaml:"application.giantswarm.io/team"`
+					}{
+						Team: "my-team",
+					},
+				},
 				repoURL:      "https://github.com/giantswarm/my-repo",
 				repoRef:      "main",
 				templatePath: "testdata/chart.template",

@@ -1,5 +1,5 @@
 ---
-title: {{ .Title }} Cluster App configuration reference
+title: {{ .Title }} Chart Configuration
 linkTitle: {{ .Title }}
 description: |
 {{- if .Description }}
@@ -8,8 +8,10 @@ description: |
   Cluster App configuration page for {{ .Title }}.
 {{- end }}
 weight: {{ .Weight }}
-layout: cluster-app
-owner: ""
+{{- if .Team }}
+owner:
+- {{ .Team }}
+{{- end }}
 source_repository: {{ .SourceRepository }}
 source_repository_ref: {{ .SourceRepositoryRef }}
 ---
