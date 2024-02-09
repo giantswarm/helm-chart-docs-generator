@@ -1,27 +1,37 @@
-# General Go template repository
+[![CircleCI](https://circleci.com/gh/giantswarm/helm-chart-docs-generator/tree/main.svg?style=svg&circle-token=2847f4b99edcb9776cbd8ee622b294eb96bfd55f)](https://circleci.com/gh/giantswarm/helm-chart-docs-generator/tree/main)
 
-This is a general template repository containing some basic files every GitHub repo owned by Giant Swarm should have.
+# helm-chart-docs-generator
 
-Note also these more specific repositories:
+Generates configuration template for Cluster App documentation.
 
-- [template-app](https://github.com/giantswarm/template-app)
-- [gitops-template](https://github.com/giantswarm/gitops-template)
-- [python-app-template](https://github.com/giantswarm/python-app-template)
+This tool is built to generate our [Cluster App configuration reference](https://docs.giantswarm.io/ui-api/management-api/cluster-apps/).
 
-## Creating a new repository
+The generated output consists of Markdown files which includes automatically the content of the Helm chart READMEs.
 
-Please do not use the `Use this template` function in the GitHub web UI.
+## Usage
 
-Check out the according [handbook article](https://handbook.giantswarm.io/docs/dev-and-releng/repository/go/) for better instructions.
+### Docker
 
-### Some suggestions for your README
+The generator can be executed in Docker using a command like this:
 
-After you have created your new repository, you may want to add some of these badges to the top of your README.
+```nohighlight
+docker run \
+    -v $PWD/path/to/output-folder:/opt/helm-chart-docs-generator/output \
+    -v $PWD:/opt/helm-chart-docs-generator/config \
+    quay.io/giantswarm/helm-chart-docs-generator:0.1.0 \
+      --config /opt/helm-chart-docs-generator/config/config.example.yaml
+```
 
-- **CircleCI:** After enabling builds for this repo via [this link](https://circleci.com/setup-project/gh/giantswarm/REPOSITORY_NAME), you can find badge code on [this page](https://app.circleci.com/settings/project/github/giantswarm/REPOSITORY_NAME/status-badges).
+Here, the tag `0.1.0` is the version number of the helm-chart-docs-generator release you're going to use. Check the [image repository](https://quay.io/repository/giantswarm/helm-chart-docs-generator?tab=tags) for available tags.
 
-- **Go reference:** use [this helper](https://pkg.go.dev/badge/) to create the markdown code.
+The volume mapping defines where the generated output will land.
 
-- **Go report card:** enter the module name on the [front page](https://goreportcard.com/) and hit "Generate report". Then use this markdown code for your badge: `[![Go report card](https://goreportcard.com/badge/github.com/giantswarm/REPOSITORY_NAME)](https://goreportcard.com/report/github.com/giantswarm/REPOSITORY_NAME)`
+### Development
 
-- **Sourcegraph "used by N projects" badge**: for public Go repos only: `[![Sourcegraph](https://sourcegraph.com/github.com/giantswarm/REPOSITORY_NAME/-/badge.svg)](https://sourcegraph.com/github.com/giantswarm/REPOSITORY_NAME)`
+With Go installed and this repository cloned, you can exetute the program like this:
+
+```nohighlight
+go run main.go --config config.example.yaml
+```
+
+See the `config.example.yaml` file for an idea how to configure your source repositories.

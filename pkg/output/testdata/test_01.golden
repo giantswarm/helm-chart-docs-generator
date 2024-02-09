@@ -1,0 +1,15 @@
+---
+title: Cluster Chart Configuration
+linkTitle: Cluster
+description: |
+  The app creates a cluster
+weight: 100
+owner:
+- my-team
+source_repository: https://github.com/giantswarm/my-repo
+source_repository_ref: main
+---
+
+This is the introduction
+
+This is the content

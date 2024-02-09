@@ -1,0 +1,17 @@
+# This is an example configuration file
+# used for development and testing purposes.
+#
+# For the effective config used in production for
+# docs.giantswarm.io, see
+# https://github.com/giantswarm/docs/blob/main/scripts/update-helm-chart-reference/config.yaml
+
+template_path: templates/chart.template
+
+output_path: output
+
+# List of repositories containing Cluster Apps.
+source_repositories:
+  - url: https://github.com/giantswarm/cluster
+    organization: giantswarm
+    name: cluster
+    commit_reference: v0.7.0
