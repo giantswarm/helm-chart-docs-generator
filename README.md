@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/helm-chart-docs-generator/tree/master.svg?style=svg&circle-token=2847f4b99edcb9776cbd8ee622b294eb96bfd55f)](https://circleci.com/gh/giantswarm/helm-chart-docs-generator/tree/master)
+[![CircleCI](https://circleci.com/gh/giantswarm/helm-chart-docs-generator/tree/main.svg?style=svg&circle-token=2847f4b99edcb9776cbd8ee622b294eb96bfd55f)](https://circleci.com/gh/giantswarm/helm-chart-docs-generator/tree/main)
 
 # helm-chart-docs-generator
 
