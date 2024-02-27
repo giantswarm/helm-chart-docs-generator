@@ -28,10 +28,10 @@ The volume mapping defines where the generated output will land.
 
 ### Development
 
-With Go installed and this repository cloned, you can exetute the program like this:
+With Go installed and this repository cloned, you can execute the program like this:
 
 ```nohighlight
 go run main.go --config config.example.yaml
 ```
 
-See the `config.example.yaml` file for an idea how to configure your source repositories.
+See the `config.example.yaml` file for an idea of how to configure your source repositories.
