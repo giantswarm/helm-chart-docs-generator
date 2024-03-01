@@ -2,9 +2,9 @@ package output
 
 import (
 	"fmt"
-	"html/template"
 	"os"
 	"strings"
+	"text/template"
 
 	"github.com/Masterminds/sprig/v3"
 	"github.com/giantswarm/microerror"
@@ -76,10 +76,6 @@ func WritePage(
 
 	err = tpl.Execute(handler, data)
 	if err != nil {
-
-		// TODO: return error
-		// return microerror.Mask(err)
-
 		fmt.Printf("%s: %s\n", outputFile, err)
 	}
 

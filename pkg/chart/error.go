@@ -2,14 +2,14 @@ package chart
 
 import "github.com/giantswarm/microerror"
 
-var CouldNotReadChartFileError = &microerror.Error{
-	Kind: "CouldNotReadChartFileError",
+var CouldNotGenerateChartFileError = &microerror.Error{
+	Kind: "CouldNotGenerateChartFileError",
 	Desc: "The Chart README file could not be read.",
 }
 
-// IsCouldNotReadChartFileError asserts CouldNotReadChartFileError
-func IsCouldNotReadChartFileError(e error) bool {
-	return microerror.Cause(e) == CouldNotReadChartFileError
+// IsCouldNotGenerateChartFileError asserts CouldNotGenerateChartFileError
+func IsCouldNotGenerateChartFileError(e error) bool {
+	return microerror.Cause(e) == CouldNotGenerateChartFileError
 }
 
 var CouldNotParsedChartFileError = &microerror.Error{
