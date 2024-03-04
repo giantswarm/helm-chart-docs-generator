@@ -20,7 +20,7 @@ type Metadata struct {
 	} `yaml:"annotations"`
 }
 
-// Read reads a README YAML file and returns the Content to render.
+// GenerateChartConfig generates a README YAML file and returns the Content to render.
 func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
 	cmd := exec.Command("schemadocs", "generate", "values.schema.json", "-o", "README.md", "-l", "linear")
 	cmd.Dir = basePath + HELM_CHARTS_FOLDER + chartName
