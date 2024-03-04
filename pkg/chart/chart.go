@@ -28,6 +28,7 @@ func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
 	if err != nil {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error(), string(output))
 	}
+	
 	content, err := os.ReadFile(basePath + HELM_CHARTS_FOLDER + chartName + "/README.md")
 	if err != nil {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
