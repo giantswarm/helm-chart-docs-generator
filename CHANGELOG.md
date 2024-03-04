@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2024-03-04
+
 ## [0.1.0] - 2024-02-15
 
 ### Changed
@@ -19,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First working version.
 
-[Unreleased]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.0.1...v0.1.0
 [0.1.0]: https://github.com/giantswarm/helm-chart-docs-generator/releases/tag/v0.0.1
