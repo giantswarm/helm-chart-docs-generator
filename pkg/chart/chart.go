@@ -28,7 +28,7 @@ func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
 	if err != nil {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error(), string(output))
 	}
-	
+
 	content, err := os.ReadFile(basePath + HELM_CHARTS_FOLDER + chartName + "/README.md")
 	if err != nil {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
@@ -45,7 +45,7 @@ func ReadChartMetadata(basePath string, chartName string) (Metadata, error) {
 	log.Printf("INFO - chart %s - reading Chart yaml", chartPath)
 	metadata, err := os.ReadFile(chartPath)
 	if err != nil {
-		return m, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
+		return m, microerror.Maskf(CouldNotReadChartMetadataFileError, err.Error())
 	}
 
 	err = yaml.Unmarshal(metadata, &m)

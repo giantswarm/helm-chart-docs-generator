@@ -12,6 +12,16 @@ func IsCouldNotGenerateChartFileError(e error) bool {
 	return microerror.Cause(e) == CouldNotGenerateChartFileError
 }
 
+var CouldNotReadChartMetadataFileError = &microerror.Error{
+	Kind: "CouldNotReadChartMetadataFileError",
+	Desc: "The Chart README file could not be parsed.",
+}
+
+// IsCouldNotReadChartMetadataFileError asserts CouldNotReadChartMetadataFileError
+func IsCouldNotReadChartMetadataFileError(e error) bool {
+	return microerror.Cause(e) == CouldNotReadChartMetadataFileError
+}
+
 var CouldNotParsedChartFileError = &microerror.Error{
 	Kind: "CouldNotParsedChartFileError",
 	Desc: "The Chart README file could not be parsed.",
