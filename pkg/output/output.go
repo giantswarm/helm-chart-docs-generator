@@ -2,9 +2,10 @@ package output
 
 import (
 	"fmt"
-	"html/template"
 	"os"
 	"strings"
+	"text/template"
+	"time"
 
 	"github.com/Masterminds/sprig/v3"
 	"github.com/giantswarm/microerror"
@@ -43,6 +44,7 @@ func WritePage(
 	funcMap := sprig.FuncMap()
 	// Join strings by separator
 	funcMap["join"] = strings.Join
+	funcMap["currentDate"] = CurrentDate
 
 	// Read our output template.
 	tpl := template.Must(template.New("schemapage").Funcs(funcMap).Parse(string(templateCode)))
@@ -76,12 +78,12 @@ func WritePage(
 
 	err = tpl.Execute(handler, data)
 	if err != nil {
-
-		// TODO: return error
-		// return microerror.Mask(err)
-
 		fmt.Printf("%s: %s\n", outputFile, err)
 	}
 
 	return outputFile, nil
+}
+
+func CurrentDate(format string) string {
+	return time.Now().Format(format)
 }

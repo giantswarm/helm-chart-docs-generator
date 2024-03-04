@@ -3,10 +3,13 @@ package chart
 import (
 	"log"
 	"os"
+	"os/exec"
 
 	"github.com/giantswarm/microerror"
 	"gopkg.in/yaml.v3"
 )
+
+const HELM_CHARTS_FOLDER = "/helm/"
 
 type Metadata struct {
 	Name        string `yaml:"name"`
@@ -17,11 +20,18 @@ type Metadata struct {
 	} `yaml:"annotations"`
 }
 
-// Read reads a README YAML file and returns the Content to render.
-func ReadChartConfig(basePath string, chartName string) ([]byte, error) {
-	content, err := os.ReadFile(basePath + "/helm/" + chartName + "/README.md")
+// GenerateChartConfig generates a README YAML file and returns the Content to render.
+func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
+	cmd := exec.Command("schemadocs", "generate", "values.schema.json", "-o", "README.md", "-l", "linear")
+	cmd.Dir = basePath + HELM_CHARTS_FOLDER + chartName
+	output, err := cmd.CombinedOutput()
 	if err != nil {
-		return nil, microerror.Maskf(CouldNotReadChartFileError, err.Error())
+		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error(), string(output))
+	}
+
+	content, err := os.ReadFile(basePath + HELM_CHARTS_FOLDER + chartName + "/README.md")
+	if err != nil {
+		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
 	}
 
 	return content, nil
@@ -30,12 +40,12 @@ func ReadChartConfig(basePath string, chartName string) ([]byte, error) {
 // Read reads a README YAML file and returns the Content to render.
 func ReadChartMetadata(basePath string, chartName string) (Metadata, error) {
 	var m Metadata
-	chartPath := basePath + "/helm/" + chartName + "/Chart.yaml"
+	chartPath := basePath + HELM_CHARTS_FOLDER + chartName + "/Chart.yaml"
 
 	log.Printf("INFO - chart %s - reading Chart yaml", chartPath)
 	metadata, err := os.ReadFile(chartPath)
 	if err != nil {
-		return m, microerror.Maskf(CouldNotReadChartFileError, err.Error())
+		return m, microerror.Maskf(CouldNotReadChartMetadataFileError, err.Error())
 	}
 
 	err = yaml.Unmarshal(metadata, &m)

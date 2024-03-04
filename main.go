@@ -95,7 +95,7 @@ func generateHelmChartDocs(configFilePath string) error {
 		if err != nil {
 			log.Fatal(err)
 		}
-		chartContent, err := chart.ReadChartConfig(clonePath, sourceRepo.Name)
+		chartContent, err := chart.GenerateChartConfig(clonePath, sourceRepo.Name)
 		if err != nil {
 			log.Fatal(err)
 		}
