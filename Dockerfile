@@ -10,7 +10,7 @@ RUN wget https://github.com/giantswarm/schemadocs/releases/download/v${SCHEMADOC
     tar -C /tmp -xzf schemadocs-v${SCHEMADOCS_VERSION}-linux-amd64.tar.gz && \
     rm schemadocs-v${SCHEMADOCS_VERSION}-linux-amd64.tar.gz
 
-# Move sschemadocs binary to /usr/local/bin
+# Move schemadocs binary to /usr/local/bin
 RUN mv /tmp/schemadocs-v${SCHEMADOCS_VERSION}-linux-amd64/schemadocs /usr/local/bin/schemadocs
 
 COPY . /opt/helm-chart-docs-generator
