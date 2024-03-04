@@ -9,6 +9,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+const HELM_CHARTS_FOLDER = "/helm/"
+
 type Metadata struct {
 	Name        string `yaml:"name"`
 	Description string `yaml:"description"`
@@ -26,12 +28,12 @@ func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
 	}
 	cmd = exec.Command("schemadocs", "generate", "values.schema.json", "-o", "README.md", "-l", "linear")
-	cmd.Dir = basePath + "/helm/" + chartName
+	cmd.Dir = basePath + HELM_CHARTS_FOLDER + chartName
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error(), string(output))
 	}
-	content, err := os.ReadFile(basePath + "/helm/" + chartName + "/README.md")
+	content, err := os.ReadFile(basePath + HELM_CHARTS_FOLDER + chartName + "/README.md")
 	if err != nil {
 		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
 	}
@@ -42,7 +44,7 @@ func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
 // Read reads a README YAML file and returns the Content to render.
 func ReadChartMetadata(basePath string, chartName string) (Metadata, error) {
 	var m Metadata
-	chartPath := basePath + "/helm/" + chartName + "/Chart.yaml"
+	chartPath := basePath + HELM_CHARTS_FOLDER + chartName + "/Chart.yaml"
 
 	log.Printf("INFO - chart %s - reading Chart yaml", chartPath)
 	metadata, err := os.ReadFile(chartPath)
