@@ -4,7 +4,7 @@ import "github.com/giantswarm/microerror"
 
 var CouldNotGenerateChartFileError = &microerror.Error{
 	Kind: "CouldNotGenerateChartFileError",
-	Desc: "The Chart README file could not be read.",
+	Desc: "The Chart README file could not be generated.",
 }
 
 // IsCouldNotGenerateChartFileError asserts CouldNotGenerateChartFileError
