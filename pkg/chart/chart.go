@@ -22,12 +22,7 @@ type Metadata struct {
 
 // Read reads a README YAML file and returns the Content to render.
 func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
-	cmd := exec.Command("go", "install", "github.com/giantswarm/schemadocs@latest")
-	err := cmd.Run()
-	if err != nil {
-		return nil, microerror.Maskf(CouldNotGenerateChartFileError, err.Error())
-	}
-	cmd = exec.Command("schemadocs", "generate", "values.schema.json", "-o", "README.md", "-l", "linear")
+	cmd := exec.Command("schemadocs", "generate", "values.schema.json", "-o", "README.md", "-l", "linear")
 	cmd.Dir = basePath + HELM_CHARTS_FOLDER + chartName
 	output, err := cmd.CombinedOutput()
 	if err != nil {
