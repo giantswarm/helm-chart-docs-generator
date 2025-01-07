@@ -4,7 +4,6 @@ go 1.19
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.3
-	github.com/giantswarm/microerror v0.4.1
 	github.com/google/go-cmp v0.6.0
 	github.com/spf13/cobra v1.8.1
 	gopkg.in/yaml.v3 v3.0.1

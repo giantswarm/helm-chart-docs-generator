@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"os"
 
-	"github.com/giantswarm/microerror"
 	"gopkg.in/yaml.v3"
 )
 
@@ -31,7 +30,7 @@ func Read(path string) (*FromFile, error) {
 
 	data, err := os.ReadFile(path)
 	if err != nil {
-		return nil, microerror.Maskf(CouldNotReadConfigFileError, err.Error())
+		return nil, err
 	}
 
 	reader := bytes.NewReader(data)
@@ -40,7 +39,7 @@ func Read(path string) (*FromFile, error) {
 	decoder.KnownFields(true)
 	err = decoder.Decode(f)
 	if err != nil {
-		return nil, microerror.Maskf(CouldNotParseConfigFileError, err.Error())
+		return nil, err
 	}
 
 	return f, nil
