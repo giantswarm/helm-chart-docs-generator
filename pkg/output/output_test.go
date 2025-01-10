@@ -6,7 +6,6 @@ import (
 	"os"
 	"testing"
 
-	"github.com/giantswarm/microerror"
 	"github.com/google/go-cmp/cmp"
 
 	"github.com/giantswarm/helm-chart-docs-generator/pkg/chart"
@@ -70,7 +69,7 @@ func TestWritePage(t *testing.T) {
 			resultPath, err := WritePage(tt.args.metadata, tt.args.content, tt.args.introduction, tempDir, tt.args.repoURL, tt.args.repoRef, tt.args.templatePath)
 			if err != tt.wantErr {
 				t.Errorf("WritePage() error = %v, wantErr %v", err, tt.wantErr)
-				t.Logf("%s", microerror.Pretty(err, true))
+				t.Logf("%s", err)
 			}
 
 			gotBytes, err := os.ReadFile(resultPath)
