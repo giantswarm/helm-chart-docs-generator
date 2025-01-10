@@ -11,7 +11,7 @@ func CloneRepositoryShallow(user string, repo string, tag string, destDir string
 		cmd := exec.Command("git", "clone", "-b", tag, "--depth", "1", fmt.Sprintf("https://github.com/%s/%s.git", user, repo), destDir) // nolint: gosec
 		err := cmd.Run()
 		if err != nil {
-			return err
+			return fmt.Errorf("failed to clone the repo %q with %w", repo, err)
 		}
 	}
 
