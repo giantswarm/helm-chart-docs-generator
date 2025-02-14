@@ -2,9 +2,9 @@ package config
 
 import (
 	"bytes"
+	"fmt"
 	"os"
 
-	"github.com/giantswarm/microerror"
 	"gopkg.in/yaml.v3"
 )
 
@@ -31,7 +31,7 @@ func Read(path string) (*FromFile, error) {
 
 	data, err := os.ReadFile(path)
 	if err != nil {
-		return nil, microerror.Maskf(CouldNotReadConfigFileError, err.Error())
+		return nil, fmt.Errorf("failed to read the file %q with %w", path, err)
 	}
 
 	reader := bytes.NewReader(data)
@@ -40,7 +40,7 @@ func Read(path string) (*FromFile, error) {
 	decoder.KnownFields(true)
 	err = decoder.Decode(f)
 	if err != nil {
-		return nil, microerror.Maskf(CouldNotParseConfigFileError, err.Error())
+		return nil, fmt.Errorf("failed to decode the file content %q with %w", path, err)
 	}
 
 	return f, nil

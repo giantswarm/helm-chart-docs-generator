@@ -1,13 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"os"
 	"path"
 
-	"github.com/giantswarm/microerror"
 	"github.com/spf13/cobra"
 
 	"github.com/giantswarm/helm-chart-docs-generator/pkg/chart"
@@ -56,7 +54,7 @@ func main() {
 	}
 
 	if err = helmChartDocsGenerator.rootCommand.Execute(); err != nil {
-		printStackTrace(err)
+		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		os.Exit(1)
 	}
 }
@@ -65,7 +63,7 @@ func main() {
 func generateHelmChartDocs(configFilePath string) error {
 	configuration, err := config.Read(configFilePath)
 	if err != nil {
-		return microerror.Mask(err)
+		return err
 	}
 
 	outputPath := configuration.OutputPath
@@ -86,7 +84,7 @@ func generateHelmChartDocs(configFilePath string) error {
 			sourceRepo.CommitReference,
 			clonePath)
 		if err != nil {
-			return microerror.Mask(err)
+			return err
 		}
 
 		log.Printf("INFO - repo %s - repository cloned successfully", sourceRepo.Name)
@@ -116,24 +114,4 @@ func generateHelmChartDocs(configFilePath string) error {
 	}
 
 	return nil
-}
-
-func printStackTrace(err error) {
-	fmt.Println("\n--- Stack Trace ---")
-	var stackedError microerror.JSONError
-	jsonErr := json.Unmarshal([]byte(microerror.JSON(err)), &stackedError)
-	if jsonErr != nil {
-		fmt.Println("Error when trying to Unmarshal JSON error:")
-		log.Printf("%#v", jsonErr)
-		fmt.Println("\nOriginal error:")
-		log.Printf("%#v", err)
-	}
-
-	for i, j := 0, len(stackedError.Stack)-1; i < j; i, j = i+1, j-1 {
-		stackedError.Stack[i], stackedError.Stack[j] = stackedError.Stack[j], stackedError.Stack[i]
-	}
-
-	for _, entry := range stackedError.Stack {
-		log.Printf("%s:%d", entry.File, entry.Line)
-	}
 }
