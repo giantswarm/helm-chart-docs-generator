@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/giantswarm/microerror"
 
 	"github.com/giantswarm/helm-chart-docs-generator/pkg/chart"
 )
@@ -37,7 +36,7 @@ func WritePage(
 
 	templateCode, err := os.ReadFile(templatePath)
 	if err != nil {
-		return "", microerror.Maskf(cannotOpenTemplate, "Could not read template file %s: %s", templatePath, err)
+		return "", err
 	}
 
 	// Add custom functions support for our template.
@@ -67,13 +66,13 @@ func WritePage(
 	if _, err := os.Stat(outputFolder); os.IsNotExist(err) {
 		err := os.MkdirAll(outputFolder, os.ModePerm)
 		if err != nil {
-			return "", microerror.Mask(err)
+			return "", err
 		}
 	}
 
 	handler, err := os.Create(outputFile)
 	if err != nil {
-		return "", microerror.Mask(err)
+		return "", err
 	}
 
 	err = tpl.Execute(handler, data)
