@@ -2,7 +2,7 @@ module github.com/giantswarm/helm-chart-docs-generator
 
 go 1.21
 
-toolchain go1.24.1
+toolchain go1.24.3
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
@@ -34,5 +34,5 @@ replace (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible => github.com/golang-jwt/jwt/v4 v4.0.0
 	github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2 // CVE-2021-3121
 	// CVE-2022-41717
-	golang.org/x/net => golang.org/x/net v0.37.0
+	golang.org/x/net => golang.org/x/net v0.40.0
 )
