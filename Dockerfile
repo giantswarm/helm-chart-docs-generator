@@ -3,7 +3,7 @@ FROM gsoci.azurecr.io/giantswarm/alpine:3.23.2
 RUN apk add --no-cache ca-certificates git && apk add --no-cache libc6-compat
 
 # Schemadocs version
-ARG SCHEMADOCS_VERSION=0.0.5
+ARG SCHEMADOCS_VERSION=0.3.2
 
 # Download and install schemadocs
 RUN wget https://github.com/giantswarm/schemadocs/releases/download/v${SCHEMADOCS_VERSION}/schemadocs-v${SCHEMADOCS_VERSION}-linux-amd64.tar.gz && \
