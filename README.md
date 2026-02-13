@@ -4,7 +4,7 @@
 
 Generates configuration template for Cluster App documentation.
 
-This tool is built to generate our [Cluster App configuration reference](https://docs.giantswarm.io/ui-api/management-api/cluster-apps/).
+This tool is built to generate our [Cluster App configuration reference](https://docs.giantswarm.io/reference/platform-api/cluster-apps/).
 
 The generated output consists of Markdown files which includes automatically the content of the Helm chart READMEs.
 
