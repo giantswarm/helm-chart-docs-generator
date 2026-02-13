@@ -18,7 +18,7 @@ The generator can be executed in Docker using a command like this:
 docker run \
     -v $PWD/path/to/output-folder:/opt/helm-chart-docs-generator/output \
     -v $PWD:/opt/helm-chart-docs-generator/config \
-    quay.io/giantswarm/helm-chart-docs-generator:0.3.0 \
+    gsoci.azurecr.io./giantswarm/helm-chart-docs-generator:0.3.0 \
       --config /opt/helm-chart-docs-generator/config/config.example.yaml
 ```
 
