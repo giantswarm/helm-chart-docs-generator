@@ -2,7 +2,7 @@ module github.com/giantswarm/helm-chart-docs-generator
 
 go 1.21
 
-toolchain go1.26.2
+toolchain go1.26.3
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
