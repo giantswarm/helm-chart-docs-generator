@@ -1,6 +1,6 @@
 module github.com/giantswarm/helm-chart-docs-generator
 
-go 1.21
+go 1.25.0
 
 toolchain go1.26.4
 
@@ -25,7 +25,7 @@ require (
 	github.com/spf13/cast v1.7.0 // indirect
 	github.com/spf13/pflag v1.0.9 // indirect
 	github.com/stretchr/testify v1.8.2 // indirect
-	golang.org/x/crypto v0.33.0 // indirect
+	golang.org/x/crypto v0.53.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
 
