@@ -2,7 +2,7 @@ module github.com/giantswarm/helm-chart-docs-generator
 
 go 1.25.0
 
-toolchain go1.26.5
+toolchain go1.26.6
 
 require (
 	github.com/Masterminds/sprig/v3 v3.3.0
@@ -34,5 +34,9 @@ replace (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible => github.com/golang-jwt/jwt/v4 v4.0.0
 	github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2 // CVE-2021-3121
 	// CVE-2022-41717
-	golang.org/x/net => golang.org/x/net v0.57.0
+	golang.org/x/net => golang.org/x/net v0.58.0
+	// CVE-2026-56852: infinite loop in unicode/norm on invalid UTF-8.
+	// Pulled in transitively by golang.org/x/crypto; not reachable from this
+	// module's code, but nancy gates go-build on the module graph.
+	golang.org/x/text => golang.org/x/text v0.41.0
 )
