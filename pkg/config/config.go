@@ -28,7 +28,7 @@ type SourceRepository struct {
 func Read(path string) (*FromFile, error) {
 	f := &FromFile{}
 
-	data, err := os.ReadFile(path)
+	data, err := os.ReadFile(path) // #nosec G304 -- config file path supplied by the operator on the command line
 	if err != nil {
 		return nil, err
 	}

@@ -60,11 +60,7 @@ func TestWritePage(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			tempDir, err := os.MkdirTemp("", "TestWritePage")
-			if err != nil {
-				t.Fatalf("Could not create temp dir: %s", err)
-			}
-			defer os.RemoveAll(tempDir)
+			tempDir := t.TempDir()
 
 			resultPath, err := WritePage(tt.args.metadata, tt.args.content, tt.args.introduction, tempDir, tt.args.repoURL, tt.args.repoRef, tt.args.templatePath)
 			if err != tt.wantErr {
@@ -72,7 +68,7 @@ func TestWritePage(t *testing.T) {
 				t.Logf("%s", err)
 			}
 
-			gotBytes, err := os.ReadFile(resultPath)
+			gotBytes, err := os.ReadFile(resultPath) // #nosec G304 -- test reads the file it just wrote into t.TempDir
 			if err != nil {
 				t.Errorf("Could not open result file %s: %s", resultPath, err)
 			}
@@ -90,11 +86,11 @@ func goldenValue(t *testing.T, goldenFile string, actual string, update bool) st
 	t.Helper()
 	goldenPath := "testdata/" + goldenFile + ".golden"
 
-	f, err := os.OpenFile(goldenPath, os.O_RDWR, 0644)
+	f, err := os.OpenFile(goldenPath, os.O_RDWR, 0600) // #nosec G304 -- fixed testdata golden file path
 	if err != nil {
 		t.Fatalf("Error opening file %s: %s", goldenPath, err)
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	if update {
 		_, err := f.WriteString(actual)

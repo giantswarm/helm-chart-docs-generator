@@ -34,7 +34,7 @@ func WritePage(
 	repoRef,
 	templatePath string) (string, error) {
 
-	templateCode, err := os.ReadFile(templatePath)
+	templateCode, err := os.ReadFile(templatePath) // #nosec G304 -- template path supplied by the operator via configuration
 	if err != nil {
 		return "", err
 	}
@@ -64,13 +64,13 @@ func WritePage(
 	outputFile := outputFolder + "/" + metadata.Name + ".md"
 
 	if _, err := os.Stat(outputFolder); os.IsNotExist(err) {
-		err := os.MkdirAll(outputFolder, os.ModePerm)
+		err := os.MkdirAll(outputFolder, 0750)
 		if err != nil {
 			return "", err
 		}
 	}
 
-	handler, err := os.Create(outputFile)
+	handler, err := os.Create(outputFile) // #nosec G304 -- output file lives in the operator-chosen output folder, named after the chart
 	if err != nil {
 		return "", err
 	}

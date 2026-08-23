@@ -72,7 +72,7 @@ func generateHelmChartDocs(configFilePath string) error {
 	}
 
 	// Loop over configured repositories
-	defer os.RemoveAll(repoFolder)
+	defer func() { _ = os.RemoveAll(repoFolder) }()
 	for _, sourceRepo := range configuration.SourceRepositories {
 		log.Printf("INFO - repo %s (%s)", sourceRepo.Name, sourceRepo.URL)
 		clonePath := repoFolder + "/" + sourceRepo.Organization + "/" + sourceRepo.Name
