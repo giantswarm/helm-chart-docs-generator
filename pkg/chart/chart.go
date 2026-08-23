@@ -28,7 +28,7 @@ func GenerateChartConfig(basePath string, chartName string) ([]byte, error) {
 		return nil, err
 	}
 
-	content, err := os.ReadFile(basePath + HELM_CHARTS_FOLDER + chartName + "/README.md")
+	content, err := os.ReadFile(basePath + HELM_CHARTS_FOLDER + chartName + "/README.md") // #nosec G304 -- path is built from our own clone directory and configured chart name
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func ReadChartMetadata(basePath string, chartName string) (Metadata, error) {
 	chartPath := basePath + HELM_CHARTS_FOLDER + chartName + "/Chart.yaml"
 
 	log.Printf("INFO - chart %s - reading Chart yaml", chartPath)
-	metadata, err := os.ReadFile(chartPath)
+	metadata, err := os.ReadFile(chartPath) // #nosec G304 -- path is built from our own clone directory and configured chart name
 	if err != nil {
 		return m, err
 	}
