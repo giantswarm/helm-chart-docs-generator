@@ -38,5 +38,5 @@ replace (
 	// CVE-2026-56852: infinite loop in unicode/norm on invalid UTF-8.
 	// Pulled in transitively by golang.org/x/crypto; not reachable from this
 	// module's code, but nancy gates go-build on the module graph.
-	golang.org/x/text => golang.org/x/text v0.41.0
+	golang.org/x/text => golang.org/x/text v0.42.0
 )
