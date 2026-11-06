@@ -1,46 +1,7 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+The changes of each release are in its notes on GitHub Releases:
+https://github.com/giantswarm/helm-chart-docs-generator/releases
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-## [0.4.0] - 2026-03-03
-
-### Changed
-
-- Bumped schemadocs tool to v0.4.0
-
-## [0.3.0] - 2026-01-23
-
-### Changed
-
-- Bumped schemadocs tool to v0.3.2
-
-## [0.2.0] - 2024-03-04
-
-### Changed
-
-- Now helm chart configuration is generated in place by schemadocs
-
-
-## [0.1.0] - 2024-02-15
-
-### Changed
-
-- Fix go binary name to correct one
-
-## [0.0.1] - 2024-02-09
-
-### Added
-
-- First working version.
-
-[Unreleased]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.4.0...HEAD
-[0.4.0]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/giantswarm/helm-chart-docs-generator/compare/v0.0.1...v0.1.0
-[0.1.0]: https://github.com/giantswarm/helm-chart-docs-generator/releases/tag/v0.0.1
+This file is not updated any more: a pull request does not edit it. The
+pull request title is the release note.
